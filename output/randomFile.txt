@@ -1,0 +1,3 @@
+1、这是测试java输入输出流.
+2、this is english char.1、这是测试java输入输出流.
+2、this is english char.
