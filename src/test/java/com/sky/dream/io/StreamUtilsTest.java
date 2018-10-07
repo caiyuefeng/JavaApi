@@ -35,7 +35,7 @@ public class StreamUtilsTest {
     public void byteWrite() throws Exception {
         String content = "1、这是测试java输入输出流."+System.getProperty("line.separator")+"2、this is english char.";
         byte[] byteArray = content.getBytes();
-        FileUtils.deleteFile("./output/OutputFile_1.txt");
+        System.out.println(FileUtils.deleteFile("./output/OutputFile_1.txt"));
         FileUtils.deleteFile("./output/OutputFile_2.txt");
         FileUtils.deleteFile("./output/randomFile.txt");
         StreamUtils.write("./output/OutputFile_1.txt",byteArray);
