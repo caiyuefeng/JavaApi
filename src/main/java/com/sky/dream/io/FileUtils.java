@@ -1,4 +1,4 @@
-package com.sky.dream.io.io;
+package com.sky.dream.io;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,7 +1,5 @@
 package com.sky.dream.io;
 
-import com.sky.dream.io.io.FileUtils;
-import com.sky.dream.io.io.StreamUtils;
 import org.junit.Test;
 
 import java.io.DataInputStream;
@@ -45,6 +43,16 @@ public class StreamUtilsTest {
         randomAccessFile.close();
     }
 
+    @Test
+    public void byteRandomAccessFile() throws Exception {
+        String content = "1、这是测试java输入输出流." + System.getProperty("line.separator") + "2、this is english char.";
+        FileUtils.deleteFile("./output/randomFile_1.txt");
+        RandomAccessFile randomAccessFile = new RandomAccessFile("./output/randomFile_1.txt", "rw");
+        StreamUtils.writeBinary(content, 10, randomAccessFile);
+        randomAccessFile.close();
+        RandomAccessFile randomAccessFile_1 = new RandomAccessFile("./output/randomFile_1.txt", "rw");
+        assertEquals(content, StreamUtils.readBinary(randomAccessFile_1, 64, 10));
+    }
     @Test
     public void charRead() throws Exception {
         System.out.println(System.getProperty("Charset.defaultCharset"));

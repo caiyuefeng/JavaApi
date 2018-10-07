@@ -1,4 +1,4 @@
-package com.sky.dream.io.io;
+package com.sky.dream.io;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -89,6 +89,11 @@ public class StreamUtils {
         return new String(destArray, StandardCharsets.UTF_8);
     }
 
+    public static String readBinary(RandomAccessFile input, int byteSize, int startIndex) throws IOException {
+        input.seek(startIndex);
+        return readBinary(input, byteSize);
+    }
+
     /**
      * 将字符串指定字节长度写入二进制写入文本
      *
@@ -112,5 +117,17 @@ public class StreamUtils {
      */
     public static void writeBinary(String line, DataOutput output) throws IOException {
         writeBinary(line, line.getBytes().length, output);
+    }
+
+    /**
+     * 设置随机访问文件流的开始写入字节位置
+     *
+     * @param line             待写入字符串
+     * @param startIndex       开始位置索引
+     * @param randomAccessFile 输出流
+     */
+    public static void writeBinary(String line, int startIndex, RandomAccessFile randomAccessFile) throws IOException {
+        randomAccessFile.seek(startIndex);
+        writeBinary(line, randomAccessFile);
     }
 }
