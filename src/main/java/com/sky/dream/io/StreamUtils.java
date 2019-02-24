@@ -50,8 +50,7 @@ public class StreamUtils {
         OutputStream out = null;
         try {
             out = new FileOutputStream(filePath);
-            out.write(byteArray);
-            out.flush();
+            write(out, byteArray);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -59,6 +58,11 @@ public class StreamUtils {
                 out.close();
             }
         }
+    }
+
+    public static void write(OutputStream outputStream, byte[] bytes) throws IOException {
+        outputStream.write(bytes);
+        outputStream.flush();
     }
 
     public static void write(String filePath, String content) throws IOException {
@@ -129,5 +133,11 @@ public class StreamUtils {
     public static void writeBinary(String line, int startIndex, RandomAccessFile randomAccessFile) throws IOException {
         randomAccessFile.seek(startIndex);
         writeBinary(line, randomAccessFile);
+    }
+
+    public static void write(PrintWriter writer, String content) {
+        writer.print(content);
+        writer.flush();
+        writer.close();
     }
 }
